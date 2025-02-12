@@ -6,7 +6,7 @@
 /*   By: vmakarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:51:26 by vmakarya          #+#    #+#             */
-/*   Updated: 2025/02/12 21:51:27 by vmakarya         ###   ########.fr       */
+/*   Updated: 2025/02/12 23:34:13 by vmakarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static char	*reading(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*str = NULL;
+	static char	*str[FD_SETSIZE] = {0};
 	char		*line;
 	char		buffer[BUFFER_SIZE + 1];
 	int			bytes_read;
@@ -98,15 +98,15 @@ char	*get_next_line(int fd)
 		if (bytes_read == 0)
 			break ;
 		if (bytes_read == -1)
-			return (free(str), str = NULL, NULL);
+			return (free(str[fd]), str[fd] = NULL, NULL);
 		buffer[bytes_read] = '\0';
-		str = ft_strjoin(str, buffer);
-		if (!str)
+		str[fd] = ft_strjoin(str[fd], buffer);
+		if (!str[fd])
 			return (NULL);
-		if (ft_strchr(str, '\n'))
+		if (ft_strchr(str[fd], '\n'))
 			break ;
 	}
-	line = reading(str);
-	str = foo(str);
+	line = reading(str[fd]);
+	str[fd] = foo(str[fd]);
 	return (line);
 }

@@ -6,10 +6,9 @@
 /*   By: vmakarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:51:31 by vmakarya          #+#    #+#             */
-/*   Updated: 2025/02/12 21:51:32 by vmakarya         ###   ########.fr       */
+/*   Updated: 2025/02/12 23:36:21 by vmakarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
